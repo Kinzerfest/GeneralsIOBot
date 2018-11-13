@@ -46,15 +46,6 @@ public class ZestyBot implements Bot{
     }
 
     private void advanceArmiesTowardsEnemy(GameState newGameState) {
-        /*
-        The below strategies only happen if we don't have battles to win
-        1. Select the largest army (we don't care where)
-        2. Move it in the direction of the nearest general
-        3. If no visible generals, move in the direction of nearest enemy contact
-        4. If no visible enemy, select random empty neighbor and move in that direction
-        *** Largest army finder excludes general until it is 20% of the total armies ??? not sure if that is sound
-          */
-
         VisibleField largestArmy = newGameState.getVisibleFields().stream()
                 .filter(this::isOwnedByMe)
                 .sorted(Comparator.comparing(VisibleField::getArmy).reversed())
