@@ -77,10 +77,6 @@ public class ZestyBot implements Bot{
     }
 
     private boolean battlesToWin(GameState newGameState) {
-        /*
-            1.  Select fields that can be attacked and sort them by priority
-            2.  Chose the largest enemy army neighbor to attack from.
-         */
         Optional<VisibleField> maybeFieldToAttack = newGameState.getVisibleFields().stream()
                 .filter(this::canBeAttacked)
                 .sorted(Comparator.comparing(this::enemyPriority))
